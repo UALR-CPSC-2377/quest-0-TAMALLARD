@@ -81,32 +81,47 @@ int main () {
 
     printGameOver(currentGuessString);
 }
-
-bool isGameDone (string currentGuess) {
-	if (currentGuessString == correctCountry && currentGuessNumber < maxNumberGuesses)
-
-		return true; // placeholder
-	else
-		return false;
-}
-
-bool isGameSuccessful (string currentGuess) {
-	if (currentGuessString == correctCountry)
+bool isGameDone(string currentGuess) {
+	if (currentGuessString == correctCountry || currentGuessNumber >= maxNumberGuesses) {
 
 		return true;
-	else return false;
-	/*  This function determines if a player succesfully
+	}
+	else {
+		return false;
+	}
+}
+	if (currentGuessString == correctCountry)
+bool isGameSuccessful(string currentGuess) {
+	if (currentGuessString == correctCountry) {
+		
+		return true;
+	}
+		else {
+			return false;
+		}
+	}
+
+/*  This function determines if a player succesfully
 	guessed all of the characters
 */
-}
 
-void printGameOver (string currentGuess) {
-	
+
+void printGameOver(string currentGuess) {
+	if (isGameSuccessful(currentGuess)) {
+		printGameBoard(currentGuess);
+		cout << "CONGRATS" << endl;
+	}
+
+	else {
+		printGameBoard(currentGuess);
+		cout << "YOU FAILED";
+	}
+}
     /*
         This function will print out the game board with a message at the bottom
         "CONGRATS" if the the player was successful and "YOU FAILED" if they werent.
     */
-}
+
 
 void printGameBoard(string guess) {
 	signed int length = guess.length();
